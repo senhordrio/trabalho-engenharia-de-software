@@ -12,3 +12,11 @@ de gerenciamento de vendas, estoque e distribuição obsoleto, o que atendia as 
 resultou em que o sistema obsleto de gerenciamento não atendesse mais a empresa. Ou seja, se viu necessário a utilização de um novo sistema.
         Para isso um sistema de gerenciamento de estoque, venda e distribuição de produtos de proteção
 individual será desenvolvido.
+
+#Tecnologias utilizadas:
+
+Linguagens: PHP(v7.4.7), HTML(v5.2), Javascrip ECMAScript 2018.
+Servidor: Apache 2.4.43.
+SGBD: phpMyAdmin 5.0.2.
+
+IDE: VSCODE v1.43.41.

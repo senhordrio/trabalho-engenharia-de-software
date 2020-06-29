@@ -12,8 +12,10 @@ de gerenciamento de vendas, estoque e distribuição obsoleto, o que atendia as 
 resultou em que o sistema obsleto de gerenciamento não atendesse mais a empresa. Ou seja, se viu necessário a utilização de um novo sistema.
         Para isso um sistema de gerenciamento de estoque, venda e distribuição de produtos de proteção
 individual será desenvolvido.
+        Esse sistema será capaz adicionar, editar, visualizar e deletar produtos do estoque, o mesmo com
+os clientes, e também com as vendas.
 
-#Tecnologias utilizadas:
+##**Tecnologias utilizadas:**
 
 Linguagens: PHP(v7.4.7), HTML(v5.2), Javascrip ECMAScript 2018.
 Servidor: Apache 2.4.43.

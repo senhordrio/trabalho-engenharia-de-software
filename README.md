@@ -17,16 +17,16 @@ os clientes, e também com as vendas.
 
 ## **Tecnologias utilizadas:**
 
-## **Linguagens:** 
+### **Linguagens:** 
 
-### **Back-End:**
+#### **Back-End:**
         PHP(v7.4.7) 
-### **Front-End**
+#### **Front-End**
         HTML(v5.2), Javascrip ECMAScript 2018, CSS
-## **Servidor:**
+### **Servidor:**
         Apache 2.4.43.
 
-## **SGBD:** 
+### **SGBD:** 
         phpMyAdmin 5.0.2.
-## **IDE:**
+### **IDE:**
         VSCODE v1.4 3.41.

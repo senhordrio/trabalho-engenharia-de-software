@@ -1,7 +1,7 @@
 # **TRABALHO DE ENGENHARIA DE SOFTWARE**
 
-        Equipe: Adriano Oliveira Silva - github: senhordrio
-                Diego Marques Andrade - github: diego-marque
+        Equipe: Adriano Oliveira Silva - :computer: github: senhordrio
+                Diego Marques Andrade - :computer: github: diego-marque
 
         Este trabalho é um produto para a disciplina de Engenharia de Software do período 2020/1.
 
@@ -28,5 +28,10 @@ os clientes, e também com as vendas.
 
 #### **SGBD:** 
         phpMyAdmin 5.0.2.
+<<<<<<< HEAD
 #### **IDE:**
         VSCODE v1.4 3.41.
+=======
+## **IDE:**
+        VSCODE v1.4 3.41.
+>>>>>>> feecb4bab156088170d3c048f0f5e622edee3d48

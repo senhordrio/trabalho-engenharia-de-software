@@ -2,6 +2,7 @@
 
         Equipe: Adriano Oliveira Silva - :computer: github: senhordrio
                 Diego Marques Andrade - :computer: github: diego-marque
+                Ian Dias Bertolucci - :computer: github: ianbertolucci
 
         Este trabalho é um produto para a disciplina de Engenharia de Software do período 2020/1.
 

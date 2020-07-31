@@ -1,9 +1,9 @@
 <?php
 	class Usuario{
-		private var $idUsuario;
-		private var $email;
-		private var $senha;
-		private var $permissoes;
+		private $idUsuario;
+		private $email;
+		private $senha;
+		private $permissoes;
 		
 		function __construct($vid, $vemail, $vsenha, $vpermissoes) {
 			$this->idUsuario = $vid;
@@ -24,4 +24,3 @@
 
         }
     }
-?>

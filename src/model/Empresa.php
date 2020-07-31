@@ -1,11 +1,11 @@
 <?php
 	class Empresa{
-		private var $idEmpresa;
-		private var $nome;
-		private var $endereco;
-        private var $contato;
-        private var $encargo;
-        private var $cnpj;
+		private $idEmpresa;
+		private $nome;
+		private $endereco;
+        private $contato;
+        private $encargo;
+        private $cnpj;
 		
 		function __construct($vid, $vnome, $vendereco, $vcontato, $vencargo, $vcnpj) {
 			$this->idEmpresa = $vid;

@@ -1,9 +1,9 @@
 <?php
 	class Produto{
-		private var $idProduto;
-		private var $nome;
-		private var $valor;
-		private var $quantidade;
+		private $idProduto;
+		private $nome;
+		private $valor;
+		private $quantidade;
 		
 		function __construct($vid, $vnome, $vvalor, $vquantidade) {
 			$this->idProduto = $vid;
@@ -42,4 +42,3 @@
 		function setNascimento($vvalor) {$this->valor = $vvalor;}
 		function setSalario($vquantidade) {$this->quantidade = $vquantidade;}
 	}
-?>

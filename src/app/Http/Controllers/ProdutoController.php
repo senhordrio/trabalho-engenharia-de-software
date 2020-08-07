@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
 
 class ProdutoController extends Controller
 {
@@ -13,7 +14,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = Produto::all();
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.create');
     }
 
     /**
@@ -34,7 +36,20 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => 'required',
+            'valor' => 'required',
+            'quantidade' => 'required'
+        ]);
+
+        $produto = new Produto([
+            'nome' => $request->get('nome'),
+            'valor' => $request->get('valor'),
+            'quantidade' => $request->get('quantidade')
+        ]);
+
+        $produto->save();
+        return redirect('/produtos')->with('success', 'Produto salvo!');
     }
 
     /**

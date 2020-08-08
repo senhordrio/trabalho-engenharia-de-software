@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/Documentos/PlayFramework/Play - Projeto aula/play-framework-55d1c3f9bf23fe4e619651ca09a05a35292601db/produtos-api" value="PREVIEW" />
+        <entry key="$USER_HOME$/Documentos/play-seguranca-5a370edc6fd28f4ff412fa67ba18b28a3d9c682f/produtos-api" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="customVMPath" />
+  </component>
+</project>

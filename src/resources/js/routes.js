@@ -1,21 +1,28 @@
-import ListaProdutos from './components/ListaProdutos.vue';
-import AdicionarProduto from './components/AdicionarProduto.vue';
-import EditarProduto from './components/EditarProduto.vue';
+
+import ListaProdutos from "./components/pages/ListaProdutos.vue";
+import AdicionarProduto from "./components/pages/AdicionarProduto.vue";
+import EditarProduto from "./components/pages/EditarProduto.vue";
+import Dashboard from "./components/pages/Dashboard.vue";
 
 export const routes = [
     {
-        name: 'home',
-        path: '/',
+        name: "",
+        path: "/",
+        component: Dashboard
+    },
+    {
+        name: "produtos",
+        path: "/produtos",
         component: ListaProdutos
     },
     {
-        name: 'adicionar',
-        path: '/adicionar',
+        name: "adicionarProduto",
+        path: "/adicionarProduto",
         component: AdicionarProduto
     },
     {
-        name: 'editar',
-        path: '/editar/:id',
+        name: "detalhesProduto",
+        path: "/editarProduto",
         component: EditarProduto
     }
 ];

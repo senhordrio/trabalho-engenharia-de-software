@@ -12,4 +12,9 @@ class Empresa extends Model
         'endereco',
         'encargo',
     ];
+
+    public function transacao()
+    {
+        return $this->belongsTo('App\Transacao', 'foreign_key');
+    }
 }

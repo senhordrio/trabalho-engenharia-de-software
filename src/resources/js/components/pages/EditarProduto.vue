@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="text-center">Editar produto</h3>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <form @submit.prevent="editarProduto">
           <div class="form-group">
@@ -47,7 +47,7 @@ export default {
           this.produto
         )
         .then((response) => {
-          this.$router.push({ name: "produtos" });
+          this.$router.push({ name: "lista-produtos" });
         });
     },
     deletarProduto() {
@@ -56,7 +56,7 @@ export default {
           `http://localhost:8000/api/produto/deletar/${this.$route.params.id}`
         )
         .then((response) => {
-          this.$router.push({ name: "produtos" });
+          this.$router.push({ name: "lista-produtos" });
         });
     },
   },

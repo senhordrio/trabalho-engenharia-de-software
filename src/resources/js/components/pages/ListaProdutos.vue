@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid w-50">
         <h3 class="text-center">Produtos</h3><br/>
         <b-button to="/adicionarProduto">Adicionar produto</b-button>
 
@@ -40,7 +40,7 @@
         },
         created() {
             this.axios
-                .get('http://localhost:8000/api/produtos')
+                .get('http://localhost:8000/api/lista-produtos')
                 .then(response => {
                     this.produtos = response.data;
                 });

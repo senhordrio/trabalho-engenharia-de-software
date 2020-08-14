@@ -15,6 +15,7 @@
             <b-nav-item to="/" class="nav-item nav-link">Dashboard</b-nav-item>
             <b-nav-item to="/lista-produtos" class="nav-item nav-link">Produtos</b-nav-item>
             <b-nav-item to="/lista-transacoes" class="nav-item nav-link">Transações</b-nav-item>
+            <b-nav-item to="/lista-empresas" class="nav-item nav-link">Empresas</b-nav-item>
           </b-nav>
         </div>
       </div>

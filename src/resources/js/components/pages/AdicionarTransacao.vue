@@ -44,7 +44,7 @@ export default {
         .post("http://localhost:8000/api/transacao/adicionar", this.transacao)
         .then(
           (response) => (
-            this.$router.push({ name: "lista-transacao" }),
+            this.$router.push({ name: "lista-transacoes" }),
             console.log(response.data)
           )
         )

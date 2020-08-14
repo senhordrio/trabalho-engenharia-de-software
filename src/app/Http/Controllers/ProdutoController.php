@@ -48,7 +48,4 @@ class ProdutoController extends Controller
 
         return response()->json('Produto deletado com sucesso!');
     }
-
-
-
 }

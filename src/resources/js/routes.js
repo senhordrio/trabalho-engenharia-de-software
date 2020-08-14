@@ -5,6 +5,8 @@ import ListaProdutos from "./components/pages/ListaProdutos.vue";
 import AdicionarProduto from "./components/pages/AdicionarProduto.vue";
 import EditarProduto from "./components/pages/EditarProduto.vue";
 import Dashboard from "./components/pages/Dashboard.vue";
+import ListaEmpresas from "./components/pages/ListaEmpresas";
+import AdicionarEmpresa from "./components/pages/AdicionarEmpresa";
 
 
 export const routes = [
@@ -38,4 +40,14 @@ export const routes = [
         path: "/adicionarTransacao",
         component: AdicionarTransacao
     },
+    {
+        name: "lista-empresas",
+        path: "/lista-empresas",
+        component: ListaEmpresas
+    },
+    {
+        name: "adicionarEmpresa",
+        path: "/adicionarEmpresa",
+        component: AdicionarEmpresa
+    }
 ];

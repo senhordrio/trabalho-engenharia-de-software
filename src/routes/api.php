@@ -23,4 +23,13 @@ Route::group(['prefix' => 'transacao'], function () {
     Route::delete('deletar/{id}', 'TransacaoController@delete');
 });
 
+Route::get('lista-empresas', 'EmpresaController@index');
+Route::group(['prefix' => 'empresa'], function () {
+    Route::post('adicionar', 'EmpresaController@add');
+    Route::get('editar/{id}', 'EmpresaController@edit');
+    Route::post('update/{id}', 'EmpresaController@update');
+    Route::delete('deletar/{id}', 'EmpresaController@delete');
+});
+
+
 

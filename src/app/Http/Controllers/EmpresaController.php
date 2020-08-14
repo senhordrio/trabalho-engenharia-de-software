@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresa;
+use App\Produto;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -13,7 +15,8 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all()->toArray();
+        return array_reverse($empresas);
     }
 
     /**
@@ -21,31 +24,17 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
-    }
+        $empresa = new Empresa([
+           'nome' =>$request->input('nome'),
+           'cnpj' =>$request->input('cnpj'),
+           'endereco' =>$request->input('endereco'),
+           'encargo' =>$request->input('encargo')
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $empresa->save();
+        return response()->json('Empresa adicionada com sucesso!');
     }
 
     /**
@@ -56,7 +45,8 @@ class EmpresaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empresa = Empresa::find($id);
+        return response()->json($empresa);
     }
 
     /**
@@ -66,9 +56,11 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+        $empresa = Empresa::find($id);
+        $empresa->update($request->all());
+        return response()->json('Empresa editada com sucesso!');
     }
 
     /**
@@ -77,8 +69,11 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $empresa = Empresa::find($id);
+        $empresa->delete();
+
+        return response()->json('Empresa deletada com sucesso!');
     }
 }

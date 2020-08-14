@@ -11,4 +11,9 @@ class Produto extends Model
         'valor',
         'quantidade'
     ];
+
+    public function transacao()
+    {
+        return $this->belongsTo('App\Transacao', 'foreign_key');
+    }
 }

@@ -10,6 +10,7 @@ class Empresa extends Model
         'nome',
         'cnpj',
         'endereco',
+        'telefone',
         'encargo',
     ];
 

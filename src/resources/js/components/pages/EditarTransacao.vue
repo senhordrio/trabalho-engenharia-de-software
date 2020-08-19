@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3 class="text-center">Adicionar transação</h3>
+    <h3 class="text-center">Editar transação</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <b-form @submit.prevent="adicionarTransacao">
+        <b-form @submit.prevent="editarTransacao">
           <b-form-group
             label="Empresa solicitante:"
             label-for="nome_empresa"
@@ -12,11 +12,11 @@
             <b-form-input id="nome_empresa" v-model="transacao.empresa" required></b-form-input>
           </b-form-group>
           <b-form-group
-            label="Produto do transacao:"
-            label-for="produto"
-            description="Insira um produto."
+            label="Produto da transacao:"
+            label-for="transacao"
+            description="Insira um transacao."
           >
-            <b-form-input id="produto" v-model="transacao.produto" required></b-form-input>
+            <b-form-input id="transacao" v-model="transacao.produto" required></b-form-input>
           </b-form-group>
           <b-form-group
             label="Quantidade:"
@@ -38,8 +38,9 @@
           >
             <b-form-input id="valor" v-model="transacao.valor" required></b-form-input>
           </b-form-group>
-          <b-button type="submit" variant="primary">Adicionar transacao</b-button>
+          <b-button type="submit" variant="primary">Salvar</b-button>
           <b-button type="button" to="/lista-transacoes" variant="outline-primary">Voltar</b-button>
+          <b-button class="ml-5" type="submit" @click="deletarTransacao(transacao.id)" variant="danger">Excluir</b-button>
         </b-form>
       </div>
     </div>
@@ -53,18 +54,33 @@ export default {
       transacao: {},
     };
   },
+  created() {
+    this.axios
+      .get(`http://localhost:8000/api/transacao/editar/${this.$route.params.id}`)
+      .then((response) => {
+        this.transacao = response.data;
+        // console.log(response.data);
+      });
+  },
   methods: {
-    adicionarTransacao() {
+    editarTransacao() {
       this.axios
-        .post("http://localhost:8000/api/transacao/adicionar", this.transacao)
-        .then(
-          (response) => (
-            this.$router.push({ name: "lista-transacoes" }),
-            console.log(response.data)
-          )
+        .post(
+          `http://localhost:8000/api/transacao/update/${this.$route.params.id}`,
+          this.transacao
         )
-        .catch((error) => console.log(error))
-        .finally(() => (this.loading = false));
+        .then((response) => {
+          this.$router.push({ name: "lista-transacoes" });
+        });
+    },
+    deletarTransacao() {
+      this.axios
+        .delete(
+          `http://localhost:8000/api/transacao/deletar/${this.$route.params.id}`
+        )
+        .then((response) => {
+          this.$router.push({ name: "lista-transacoes" });
+        });
     },
   },
 };

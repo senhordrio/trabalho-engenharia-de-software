@@ -30,7 +30,8 @@ class EmpresaController extends Controller
            'nome' =>$request->input('nome'),
            'cnpj' =>$request->input('cnpj'),
            'endereco' =>$request->input('endereco'),
-           'encargo' =>$request->input('encargo')
+           'encargo' =>$request->input('encargo'),
+           'telefone'=>$request->input('telefone')
         ]);
 
         $empresa->save();

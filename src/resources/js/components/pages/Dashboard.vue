@@ -1,17 +1,17 @@
 <template>
-  <div class="container-fluid w-50">
-    <b-row>
-      <b-col lg="4" class="pb-2">
-        <b-button to="/lista-empresas" size="lg">EMPRESAS</b-button>
+  <b-container fluid="sm">
+    <b-row  align-v="center" align-h="end">
+      <b-col lg="2">
+        <b-button to="/lista-empresas" size="lg" variant="primary">EMPRESAS</b-button>
       </b-col>
-      <b-col lg="4" class="pb-2">
-        <b-button to="/lista-produtos" size="lg">PRODUTOS</b-button>
+      <b-col lg="2">
+        <b-button to="/lista-produtos" size="lg" variant="primary">PRODUTOS</b-button>
       </b-col>
-      <b-col lg="4" class="pb-2">
-        <b-button to="/lista-transacoes" size="lg">TRANSAÇÕES</b-button>
+      <b-col lg="4">
+        <b-button to="/lista-transacoes" size="lg" variant="primary">TRANSAÇÕES</b-button>
       </b-col>
     </b-row>
-  </div>
+  </b-container>
 </template>
 
 <script>

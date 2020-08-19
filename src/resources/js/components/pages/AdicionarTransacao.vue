@@ -3,29 +3,44 @@
     <h3 class="text-center">Adicionar transação</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form @submit.prevent="adicionarTransacao">
-          <div class="form-group">
-            <label>Empresa</label>
-            <input type="text" class="form-control" v-model="transacao.empresa" />
+        <b-form @submit.prevent="adicionarTransacao">
+          <b-form-group
+            label="Empresa solicitante:"
+            label-for="nome_empresa"
+            description="Insira a empresa solicitante."
+          >
+            <b-form-input id="nome_empresa" v-model="transacao.empresa" required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Produto do transacao:"
+            label-for="produto"
+            description="Insira um produto."
+          >
+            <b-form-input id="produto" v-model="transacao.produto" required></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label="Quantidade:"
+            label-for="quantidade"
+            description="Insira uma quantidade."
+          >
+            <b-form-input id="quantidade" v-model="transacao.quantidade" required></b-form-input>
+          </b-form-group>
+          <div>
+            <b-button type="button" variant="primary">+</b-button>
           </div>
-          <div class="form-group">
-            <label>Produto</label>
-            <input type="text" class="form-control" v-model="transacao.produto" />
+          <div class="mb-2 mt-1">
+            <label for="data">Data da transacao</label>
+            <b-form-datepicker id="data" v-model="transacao.data" class="mb-2"></b-form-datepicker>
           </div>
-          <div class="form-group">
-            <label>Quantidade</label>
-            <input type="text" class="form-control" v-model="transacao.quantidade" />
-          </div>
-          <div class="form-group">
-            <label>Data</label>
-            <input type="text" class="form-control" v-model="transacao.data" />
-          </div>
-          <div class="form-group">
-            <label>Valor</label>
-            <input type="text" class="form-control" v-model="transacao.valor" />
-          </div>
-          <b-button type="submit" class="btn btn-primary">Adicionar transação</b-button>
-        </form>
+          <b-form-group
+            label="Valor total:"
+            label-for="valor"
+          >
+            <b-form-input id="valor" v-model="transacao.valor" required></b-form-input>
+          </b-form-group>
+          <b-button type="submit" variant="primary">Adicionar transacao</b-button>
+          <b-button type="button" to="/lista-transacoes" variant="outline-primary">Voltar</b-button>
+        </b-form>
       </div>
     </div>
   </div>

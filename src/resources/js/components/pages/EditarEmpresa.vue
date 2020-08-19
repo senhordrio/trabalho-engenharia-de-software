@@ -3,49 +3,46 @@
     <h3 class="text-center">Editar empresa</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <b-form @submit.prevent="editarEmpresa" v-if="show"></b-form>
-        <b-form-group label="Nome da empresa:" label-for="nome_empresa">
+        <b-form @submit.prevent="editarEmpresa">
+        <b-form-group label="Nome da empresa:" label-for="nome_empresa" description="Insira o nome da empresa.">
           <b-form-input
             id="nome_empresa"
             v-model="empresa.nome"
             required
-            placeholder="Insira o nome da empresa"
           ></b-form-input>
         </b-form-group>
-        <b-form-group label="CNPJ:" label-for="cnpj">
+        <b-form-group label="CNPJ:" label-for="cnpj" description="Insira apenas os 14 números.">
           <b-form-input
             id="cnpj"
             v-model="empresa.cnpj"
             required
-            placeholder="Insira o CNPJ da empresa"
           ></b-form-input>
         </b-form-group>
-        <b-form-group label="Telefone para contato:" label-for="telefone">
+        <b-form-group label="Telefone para contato:" label-for="telefone" description="DDD e número sem espaços ou traços.">
           <b-form-input
             id="telefone"
             v-model="empresa.telefone"
             required
-            placeholder="Formato:(99)99999-9999"
           ></b-form-input>
         </b-form-group>
-        <b-form-group label="Fornecedor/Cliente:" label-for="encargo">
+        <b-form-group label="Fornecedor/Cliente:" label-for="encargo" description="Fornecedor ou Cliente.">
           <b-form-input
             id="encargo"
             v-model="empresa.encargo"
             required
-            placeholder="Insira o encargo"
           ></b-form-input>
         </b-form-group>
-        <b-form-group label="Endereço:" label-for="endereco">
+        <b-form-group label="Endereço:" label-for="endereco" description="Rua e número.">
           <b-form-input
             id="endereco"
             v-model="empresa.endereco"
             required
-            placeholder="Insira o endereço(Rua/Av, Número e bairro.):"
           ></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Salvar</b-button>
-        <b-button type="submit" @click="deletarEmpresa(empresa.id)" variant="danger">Excluir</b-button>
+        <b-button type="submit" to="/lista-empresas" variant="outline-primary">Voltar</b-button>
+        <b-button type="submit" class="ml-5" @click="deletarEmpresa(empresa.id)" variant="danger">Excluir</b-button>
+        </b-form>
       </div>
     </div>
   </div>
@@ -75,7 +72,7 @@ export default {
           this.empresa
         )
         .then((response) => {
-          this.$router.push({ name: "lista-produtos" });
+          this.$router.push({ name: "lista-empresas" });
         });
     },
     deletarEmpresa() {
@@ -84,7 +81,7 @@ export default {
           `http://localhost:8000/api/empresa/deletar/${this.$route.params.id}`
         )
         .then((response) => {
-          this.$router.push({ name: "lista-produtos" });
+          this.$router.push({ name: "lista-empresas" });
         });
     },
   },

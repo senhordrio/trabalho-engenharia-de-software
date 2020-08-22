@@ -76,13 +76,15 @@ export default {
         });
     },
     deletarEmpresa() {
-      this.axios
-        .delete(
-          `http://localhost:8000/api/empresa/deletar/${this.$route.params.id}`
-        )
-        .then((response) => {
-          this.$router.push({ name: "lista-empresas" });
-        });
+      if (confirm('Deseja mesmo exluir esta empresa?')){
+        this.axios
+          .delete(
+            `http://localhost:8000/api/empresa/deletar/${this.$route.params.id}`
+          )
+          .then((response) => {
+            this.$router.push({ name: "lista-empresas" });
+          });
+      }
     },
   },
 };

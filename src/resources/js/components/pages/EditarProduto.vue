@@ -64,13 +64,15 @@ export default {
         });
     },
     deletarProduto() {
-      this.axios
-        .delete(
-          `http://localhost:8000/api/produto/deletar/${this.$route.params.id}`
-        )
-        .then((response) => {
-          this.$router.push({ name: "lista-produtos" });
-        });
+      if (confirm('Deseja mesmo excluir este produto?')){
+        this.axios
+          .delete(
+            `http://localhost:8000/api/produto/deletar/${this.$route.params.id}`
+          )
+          .then((response) => {
+            this.$router.push({ name: "lista-produtos" });
+          });
+      }
     },
   },
 };

@@ -74,13 +74,15 @@ export default {
         });
     },
     deletarTransacao() {
-      this.axios
-        .delete(
-          `http://localhost:8000/api/transacao/deletar/${this.$route.params.id}`
-        )
-        .then((response) => {
-          this.$router.push({ name: "lista-transacoes" });
-        });
+        if (confirm('Deseja mesmo excluir esta transação?')){
+          this.axios
+            .delete(
+              `http://localhost:8000/api/transacao/deletar/${this.$route.params.id}`
+            )
+            .then((response) => {
+              this.$router.push({ name: "lista-transacoes" });
+            });
+        }
     },
   },
 };

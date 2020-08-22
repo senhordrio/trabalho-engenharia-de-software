@@ -23,6 +23,7 @@ class ProdutoController extends Controller
         $produto = new Produto([
             'nome' =>$request->input('nome'),
             'valor' =>$request->input('valor'),
+            'ncm' =>$request->input('ncm'),
             'quantidade' =>$request->input('quantidade')
         ]);
         $produto->save();

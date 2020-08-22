@@ -18,6 +18,7 @@ class CreateProdutosTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->decimal('valor',8, 2);
+            $table->char('ncm', 8);
             $table->integer('quantidade');
         });
     }

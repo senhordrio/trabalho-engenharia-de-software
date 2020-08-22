@@ -1,51 +1,64 @@
 <template>
-    <div>
-        <h3 class="text-center">Adicionar empresa</h3>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form @submit.prevent="adicionarEmpresa">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" class="form-control" v-model="empresa.nome" />
-                    </div>
-                    <div class="form-group">
-                        <label>CNPJ</label>
-                        <input type="text" class="form-control" v-model="empresa.cnpj" />
-                    </div>
-                    <div class="form-group">
-                        <label>Endereço</label>
-                        <input type="text" class="form-control" v-model="empresa.endereco" />
-                    </div>
-                    <div class="form-group">
-                        <label>Encargo</label>
-                        <input type="text" class="form-control" v-model="empresa.encargo" />
-                    </div>
-                    <b-button type="submit" class="btn btn-primary">Adicionar Empresa</b-button>
-                </form>
-            </div>
-        </div>
+  <div>
+    <h3 class="text-center">Adicionar empresa</h3>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <b-form @submit.prevent="adicionarEmpresa">
+        <b-form-group
+          label="Nome da empresa:"
+          label-for="nome_empresa"
+          description="Insira o nome da empresa."
+        >
+          <b-form-input id="nome_empresa" v-model="empresa.nome" required></b-form-input>
+        </b-form-group>
+        <b-form-group label="CNPJ:" label-for="cnpj" description="Insira apenas os 14 números.">
+          <b-form-input id="cnpj" v-model="empresa.cnpj" required></b-form-input>
+        </b-form-group>
+        <b-form-group
+          label="Telefone para contato:"
+          label-for="telefone"
+          description="DDD e número sem espaços ou traços."
+        >
+          <b-form-input id="telefone" v-model="empresa.telefone" required></b-form-input>
+        </b-form-group>
+        <b-form-group
+          label="Fornecedor/Cliente:"
+          label-for="encargo"
+          description="Fornecedor ou Cliente."
+        >
+          <b-form-input id="encargo" v-model="empresa.encargo" required></b-form-input>
+        </b-form-group>
+        <b-form-group label="Endereço:" label-for="endereco" description="Rua e número.">
+          <b-form-input id="endereco" v-model="empresa.endereco" required></b-form-input>
+        </b-form-group>
+        <b-button type="submit" variant="primary">Adicionar empresa</b-button>
+        <b-button type="button" to="/lista-empresas" variant="outline-primary">Voltar</b-button>
+        </b-form>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            empresa: {},
-        };
+  data() {
+    return {
+      empresa: {},
+    };
+  },
+  methods: {
+    adicionarEmpresa() {
+      this.axios
+        .post("http://localhost:8000/api/empresa/adicionar", this.empresa)
+        .then(
+          (response) => (
+            this.$router.push({ name: "lista-empresas" }),
+            console.log(response.data)
+          )
+        )
+        .catch((error) => console.log(error))
+        .finally(() => (this.loading = false));
     },
-    methods: {
-        adicionarEmpresa() {
-            this.axios
-                .post("http://localhost:8000/api/empresa/adicionar", this.empresa)
-                .then(
-                    (response) => (
-                        this.$router.push({ name: "lista-empresas" }), console.log(response.data)
-                    )
-                )
-                .catch((error) => console.log(error))
-                .finally(() => (this.loading = false));
-        },
-    },
+  },
 };
 </script>

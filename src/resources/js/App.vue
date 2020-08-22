@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <SideBar/>
+            <SideBar v-if="!isLogin"/>
         </div>
         <router-view/>
     </div>
@@ -14,6 +14,12 @@ export default {
     components:{
         SideBar,
         LayoutPagina
+    },
+
+    computed: {
+        isLogin() {
+            return this.$route.name === 'login'
+        }
     }
 };
 </script>

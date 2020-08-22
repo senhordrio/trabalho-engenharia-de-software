@@ -7,12 +7,18 @@ import EditarProduto from "./components/pages/EditarProduto.vue";
 import Dashboard from "./components/pages/Dashboard.vue";
 import ListaEmpresas from "./components/pages/ListaEmpresas";
 import AdicionarEmpresa from "./components/pages/AdicionarEmpresa";
+import Login from "./components/pages/Login";
 
 
 export const routes = [
     {
-        name: "",
+        name: "login",
         path: "/",
+        component: Login
+    },
+    {
+        name: "dashboard",
+        path: "/dashboard",
         component: Dashboard
     },
     {

@@ -52,7 +52,7 @@ export default {
 <style>
 
 html, .body-login{
-    background: #456;
+   
     font-family: 'Open Sans', sans-serif;
 }
 

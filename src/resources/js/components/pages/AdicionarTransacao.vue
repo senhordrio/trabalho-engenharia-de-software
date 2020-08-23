@@ -9,14 +9,33 @@
             label-for="nome_empresa"
             description="Insira a empresa solicitante."
           >
-            <b-form-input id="nome_empresa" v-model="transacao.empresa" required></b-form-input>
+            <datalist id="nome_empresas" autocomplete="off">
+              <option
+                v-for="empresa in empresas"
+                v-bind:key="empresa.nome"
+                :value="empresa.id"
+              >{{empresa.nome}}</option>
+            </datalist>
+            <b-form-input
+              list="nome_empresas"
+              required
+              v-model="transacao.empresa"
+            ></b-form-input>
           </b-form-group>
-          <b-form-group
-            label="Produto do transacao:"
-            label-for="produto"
-            description="Insira um produto."
-          >
-            <b-form-input id="produto" v-model="transacao.produto" required></b-form-input>
+          <b-form-group label="Produto:" label-for="nome_produto" description="Insira um produto.">
+            <datalist id="nome_produto">
+              <option
+                v-for="produto in produtos"
+                v-bind:key="produto.nome"
+                :value="produto.id"
+              >Nome: {{produto.nome}}/ Preço: {{produto.valor}}</option>
+            </datalist>
+            <b-form-input
+              list="nome_produto"
+              autocomplete="off"
+              required
+              v-model="transacao.produto"
+            ></b-form-input>
           </b-form-group>
           <b-form-group
             label="Quantidade:"
@@ -25,18 +44,12 @@
           >
             <b-form-input id="quantidade" v-model="transacao.quantidade" required></b-form-input>
           </b-form-group>
-          <div>
-            <b-button type="button" variant="primary">+</b-button>
-          </div>
           <div class="mb-2 mt-1">
             <label for="data">Data da transacao</label>
             <b-form-datepicker id="data" v-model="transacao.data" class="mb-2"></b-form-datepicker>
           </div>
-          <b-form-group
-            label="Valor total:"
-            label-for="valor"
-          >
-            <b-form-input id="valor" v-model="transacao.valor" required></b-form-input>
+          <b-form-group label="Valor total:" label-for="geraPreco">
+            <b-form-input  v-model="transacao.valor" required></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Adicionar transacao</b-button>
           <b-button type="button" to="/lista-transacoes" variant="outline-primary">Voltar</b-button>
@@ -51,7 +64,12 @@ export default {
   data() {
     return {
       transacao: {},
+      empresas: [],
+      produtos: [],
     };
+  },
+  computed:{
+
   },
   methods: {
     adicionarTransacao() {
@@ -66,6 +84,20 @@ export default {
         .catch((error) => console.log(error))
         .finally(() => (this.loading = false));
     },
+  },
+  //Created aninhado que retorna listas de empresa e produtos cadastrados
+  created() {
+    this.axios
+      .get("http://localhost:8000/api/lista-empresas")
+      .then((response) => {
+        this.empresas = response.data;
+        this.axios
+          .get("http://localhost:8000/api/lista-produtos")
+          .then((response) => {
+            this.produtos = response.data;
+          });
+      })
+      .catch((error) => console.log(error));
   },
 };
 </script>

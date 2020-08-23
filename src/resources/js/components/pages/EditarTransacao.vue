@@ -3,6 +3,9 @@
     <h3 class="text-center">Editar transação</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div>
+          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+        </div>
         <b-form @submit.prevent="editarTransacao">
           <b-form-group
             label="Empresa solicitante:"
@@ -52,6 +55,7 @@ export default {
   data() {
     return {
       transacao: {},
+      showAlert: true
     };
   },
   created() {
@@ -81,6 +85,10 @@ export default {
             )
             .then((response) => {
               this.$router.push({ name: "lista-transacoes" });
+            })
+            .catch((error) => {
+              this.showAlert = true;
+              console.log(error.response);
             });
         }
     },

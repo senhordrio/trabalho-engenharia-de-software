@@ -3,6 +3,9 @@
     <h3 class="text-center">Adicionar transação</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div>
+          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+        </div>
         <b-form @submit.prevent="adicionarTransacao">
           <b-form-group
             label="Empresa solicitante:"
@@ -66,6 +69,7 @@ export default {
       transacao: {},
       empresas: [],
       produtos: [],
+      showAlert: true
     };
   },
   computed:{
@@ -81,7 +85,10 @@ export default {
             console.log(response.data)
           )
         )
-        .catch((error) => console.log(error))
+        .catch((error) => {
+          this.showAlert = true;
+          console.log(error.response);
+        })
         .finally(() => (this.loading = false));
     },
   },

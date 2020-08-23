@@ -3,6 +3,9 @@
     <h3 class="text-center">Editar empresa</h3>
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div>
+          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+        </div>
         <b-form @submit.prevent="editarEmpresa">
         <b-form-group label="Nome da empresa:" label-for="nome_empresa" description="Insira o nome da empresa.">
           <b-form-input
@@ -54,6 +57,7 @@ export default {
     return {
       empresa: {},
       options: ["Fornecedor", "Cliente"],
+      showAlert: false
     };
   },
   created() {
@@ -73,6 +77,9 @@ export default {
         )
         .then((response) => {
           this.$router.push({ name: "lista-empresas" });
+        })
+        .catch((error) => {
+          this.showAlert = true;
         });
     },
     deletarEmpresa() {
@@ -83,8 +90,12 @@ export default {
           )
           .then((response) => {
             this.$router.push({ name: "lista-empresas" });
+          })
+          .catch((error) => {
+            this.showAlert = true;
           });
       }
+
     },
   },
 };

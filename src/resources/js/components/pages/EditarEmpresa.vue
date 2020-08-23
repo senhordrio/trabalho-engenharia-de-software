@@ -40,8 +40,8 @@
           ></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Salvar</b-button>
-        <b-button type="submit" to="/lista-empresas" variant="outline-primary">Voltar</b-button>
-        <b-button type="submit" class="ml-5" @click="deletarEmpresa(empresa.id)" variant="danger">Excluir</b-button>
+        <b-button type="button" to="/lista-empresas" variant="outline-primary">Voltar</b-button>
+        <b-button type="button" class="ml-5" @click="deletarEmpresa(empresa.id)" variant="danger">Excluir</b-button>
         </b-form>
       </div>
     </div>

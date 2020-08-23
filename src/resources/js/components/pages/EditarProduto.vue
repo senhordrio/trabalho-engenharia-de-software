@@ -30,7 +30,7 @@
           </b-form-group>
           <b-button type="submit" variant="primary">Salvar</b-button>
           <b-button type="button" to="/lista-produtos" variant="outline-primary">Voltar</b-button>
-          <b-button class="ml-5" type="submit" @click="deletarProduto(produto.id)" variant="danger">Excluir</b-button>
+          <b-button class="ml-5" type="button" @click="deletarProduto(produto.id)" variant="danger">Excluir</b-button>
         </b-form>
       </div>
     </div>

@@ -15,6 +15,8 @@ Route::group(['prefix' => 'produto'], function () {
     Route::delete('deletar/{id}', 'ProdutoController@delete');
 });
 
+Route::post('/login', 'UsuarioController@login');
+
 Route::get('lista-transacoes', 'TransacaoController@index');
 Route::group(['prefix' => 'transacao'], function () {
     Route::post('adicionar', 'TransacaoController@add');

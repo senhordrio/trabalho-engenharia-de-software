@@ -81,4 +81,9 @@ class UsuarioController extends Controller
     {
         //
     }
+
+    public function login(Request $request){
+        error_log($request);
+        return response()->json($request);
+    }
 }

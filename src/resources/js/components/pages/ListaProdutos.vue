@@ -36,10 +36,23 @@
 export default {
   data() {
     return {
+      usuario: {
+        email: '',
+        senha: ''
+      },
       produtos: [],
     };
   },
   created() {
+    this.usuario.email = JSON.parse(sessionStorage.getItem('email'));
+    this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
+
+    if (!this.usuario.email || !this.usuario.senha){
+      console.log("entrou")
+      this.$router.push({name: 'login'})
+    }
+
+    console.log(this.usuario);
     this.axios
       .get("http://localhost:8000/api/lista-produtos")
       .then((response) => {

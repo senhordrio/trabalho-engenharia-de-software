@@ -69,7 +69,7 @@ export default {
       transacao: {},
       empresas: [],
       produtos: [],
-      showAlert: true
+      showAlert: false
     };
   },
   computed:{

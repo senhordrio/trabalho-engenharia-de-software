@@ -8,7 +8,7 @@ use App\Transacao;
 
 class TransacaoController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +28,7 @@ class TransacaoController extends Controller
             'quantidade' => $request->input('quantidade'),
             'data' => $request->input('data'),
             'valor' => $request->input('valor'),
-            'condicao' => '0'
+            'condicao'
         ]);
         $transacao->save();
         return response()->json('Transacão adicionada com sucesso!');

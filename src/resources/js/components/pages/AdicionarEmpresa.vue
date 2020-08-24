@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       empresa: {},
+      showAlert: false
     };
   },
   methods: {

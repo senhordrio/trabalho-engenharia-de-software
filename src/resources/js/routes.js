@@ -9,6 +9,7 @@ import ListaEmpresas from "./components/pages/ListaEmpresas";
 import AdicionarEmpresa from "./components/pages/AdicionarEmpresa";
 import EditarEmpresa from "./components/pages/EditarEmpresa";
 import Login from "./components/pages/Login";
+import FecharBalanco from "./components/pages/FecharBalanco";
 
 export const routes = [
     {
@@ -66,4 +67,9 @@ export const routes = [
         path: "/editarEmpresa",
         component: EditarEmpresa
     },
+    {
+      name: 'fecharBalanco',
+      path: '/fechar-balanco',
+      component: FecharBalanco
+    }
 ];

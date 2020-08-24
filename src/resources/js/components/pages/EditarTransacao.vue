@@ -4,7 +4,12 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div>
-          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+          <b-alert
+            show
+            dismissible
+            v-model="showAlert"
+            variant="danger"
+          >Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
         </div>
         <b-form @submit.prevent="editarTransacao">
           <b-form-group
@@ -35,15 +40,17 @@
             <label for="data">Data da transacao</label>
             <b-form-datepicker id="data" v-model="transacao.data" class="mb-2"></b-form-datepicker>
           </div>
-          <b-form-group
-            label="Valor total:"
-            label-for="valor"
-          >
+          <b-form-group label="Valor total:" label-for="valor">
             <b-form-input id="valor" v-model="transacao.valor" required></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Salvar</b-button>
           <b-button type="button" to="/lista-transacoes" variant="outline-primary">Voltar</b-button>
-          <b-button class="ml-5" type="button" @click="deletarTransacao(transacao.id)" variant="danger">Excluir</b-button>
+          <b-button
+            class="ml-5"
+            type="button"
+            @click="deletarTransacao(transacao.id)"
+            variant="danger"
+          >Excluir</b-button>
         </b-form>
       </div>
     </div>
@@ -55,12 +62,14 @@ export default {
   data() {
     return {
       transacao: {},
-      showAlert: true
+      showAlert: false,
     };
   },
   created() {
     this.axios
-      .get(`http://localhost:8000/api/transacao/editar/${this.$route.params.id}`)
+      .get(
+        `http://localhost:8000/api/transacao/editar/${this.$route.params.id}`
+      )
       .then((response) => {
         this.transacao = response.data;
         // console.log(response.data);
@@ -75,22 +84,26 @@ export default {
         )
         .then((response) => {
           this.$router.push({ name: "lista-transacoes" });
+        })
+        .catch((error) => {
+          this.showAlert = true;
+          console.log(error.response);
         });
     },
     deletarTransacao() {
-        if (confirm('Deseja mesmo excluir esta transação?')){
-          this.axios
-            .delete(
-              `http://localhost:8000/api/transacao/deletar/${this.$route.params.id}`
-            )
-            .then((response) => {
-              this.$router.push({ name: "lista-transacoes" });
-            })
-            .catch((error) => {
-              this.showAlert = true;
-              console.log(error.response);
-            });
-        }
+      if (confirm("Deseja mesmo excluir esta transação?")) {
+        this.axios
+          .delete(
+            `http://localhost:8000/api/transacao/deletar/${this.$route.params.id}`
+          )
+          .then((response) => {
+            this.$router.push({ name: "lista-transacoes" });
+          })
+          .catch((error) => {
+            this.showAlert = true;
+            console.log(error.response);
+          });
+      }
     },
   },
 };

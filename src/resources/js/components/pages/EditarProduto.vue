@@ -4,7 +4,12 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div>
-          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+          <b-alert
+            show
+            dismissible
+            v-model="showAlert"
+            variant="danger"
+          >Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
         </div>
         <b-form @submit.prevent="editarProduto">
           <b-form-group
@@ -33,7 +38,12 @@
           </b-form-group>
           <b-button type="submit" variant="primary">Salvar</b-button>
           <b-button type="button" to="/lista-produtos" variant="outline-primary">Voltar</b-button>
-          <b-button class="ml-5" type="button" @click="deletarProduto(produto.id)" variant="danger">Excluir</b-button>
+          <b-button
+            class="ml-5"
+            type="button"
+            @click="deletarProduto(produto.id)"
+            variant="danger"
+          >Excluir</b-button>
         </b-form>
       </div>
     </div>
@@ -45,7 +55,7 @@ export default {
   data() {
     return {
       produto: {},
-      showAlert: true
+      showAlert: false,
     };
   },
   created() {
@@ -65,10 +75,14 @@ export default {
         )
         .then((response) => {
           this.$router.push({ name: "lista-produtos" });
+        })
+        .catch((error) => {
+          this.showAlert = true;
+          console.log(error.response);
         });
     },
     deletarProduto() {
-      if (confirm('Deseja mesmo excluir este produto?')){
+      if (confirm("Deseja mesmo excluir este produto?")) {
         this.axios
           .delete(
             `http://localhost:8000/api/produto/deletar/${this.$route.params.id}`

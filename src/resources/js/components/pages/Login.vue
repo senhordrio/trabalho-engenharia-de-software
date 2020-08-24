@@ -41,9 +41,9 @@ export default {
     },
 
     /*
-      ATENÇÃO: os métodos de login e logout abaixo
-      são experimentais e a nível de demonstração,
-      e não deverão ser seguidos de exemplo. Os dados
+      ATENÇÃO: o método de login abaixo
+      é experimental e a nível de DEMONSTRAÇÃO,
+      e não deverá ser seguido de exemplo. Os dados
       não são mascarados, estando em plain text.
      */
 

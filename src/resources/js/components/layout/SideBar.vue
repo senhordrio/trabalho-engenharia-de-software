@@ -31,6 +31,13 @@
 <script>
 export default {
 
+  /*
+  ATENÇÃO: o método de logout abaixo
+  é experimental e a nível de DEMONSTRAÇÃO,
+  e não deverá ser seguido de exemplo. Os dados
+  não são mascarados, estando em plain text.
+ */
+
   methods: {
     logOut(){
       sessionStorage.removeItem('email');

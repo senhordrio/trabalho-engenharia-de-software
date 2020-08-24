@@ -48,7 +48,6 @@ export default {
     this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
 
     if (!this.usuario.email || !this.usuario.senha){
-      console.log("entrou")
       this.$router.push({name: 'login'})
     }
 

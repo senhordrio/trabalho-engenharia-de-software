@@ -42,9 +42,20 @@ export default {
   data() {
     return {
       transacoes: [],
+      usuario: {
+        email: '',
+        senha: ''
+      },
     };
   },
   created() {
+    this.usuario.email = JSON.parse(sessionStorage.getItem('email'));
+    this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
+
+    if (!this.usuario.email || !this.usuario.senha){
+      this.$router.push({name: 'login'})
+    }
+
     this.axios
       .get("http://localhost:8000/api/lista-transacoes")
       .then((response) => {

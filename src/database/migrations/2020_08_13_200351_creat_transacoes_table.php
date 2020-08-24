@@ -21,7 +21,7 @@ class CreatTransacoesTable extends Migration
             $table->integer('quantidade');
             $table->date('data');
             $table->decimal('valor',8, 2);
-            $table->boolean('condicao');
+            $table->string('condicao')->default('Aberta');
             $table->foreign('empresa')->references('id')->on('empresas')->onDelete('cascade');
             $table->foreign('produto')->references('id')->on('produtos')->onDelete('cascade');
         });

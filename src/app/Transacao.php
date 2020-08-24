@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transacao extends Model
 {
     public $table = "transacoes";
-    
+
     protected $fillable = [
         'empresa',
         'produto',

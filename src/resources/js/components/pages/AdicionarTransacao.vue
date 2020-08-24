@@ -4,7 +4,12 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div>
-          <b-alert show dismissible v-model="showAlert" variant="danger">Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
+          <b-alert
+            show
+            dismissible
+            v-model="showAlert"
+            variant="danger"
+          >Ocorreu um erro na validação dos dados. Verifique se foram inseridos dados compatíveis aos campos.</b-alert>
         </div>
         <b-form @submit.prevent="adicionarTransacao">
           <b-form-group
@@ -12,47 +17,44 @@
             label-for="nome_empresa"
             description="Insira a empresa solicitante."
           >
-            <datalist id="nome_empresas" autocomplete="off">
-              <option
+            <b-form-select v-model="transacao.empresa">
+              <b-form-select-option
                 v-for="empresa in empresas"
-                v-bind:key="empresa.nome"
+                :key="empresa.id"
                 :value="empresa.id"
-              >{{empresa.nome}}</option>
-            </datalist>
-            <b-form-input
-              list="nome_empresas"
-              required
-              v-model="transacao.empresa"
-            ></b-form-input>
+              >{{empresa.nome}}</b-form-select-option>
+            </b-form-select>
           </b-form-group>
-          <b-form-group label="Produto:" label-for="nome_produto" description="Insira um produto.">
-            <datalist id="nome_produto">
-              <option
-                v-for="produto in produtos"
-                v-bind:key="produto.nome"
-                :value="produto.id"
-              >Nome: {{produto.nome}}/ Preço: {{produto.valor}}</option>
-            </datalist>
-            <b-form-input
-              list="nome_produto"
-              autocomplete="off"
-              required
-              v-model="transacao.produto"
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="Quantidade:"
-            label-for="quantidade"
-            description="Insira uma quantidade."
-          >
-            <b-form-input id="quantidade" v-model="transacao.quantidade" required></b-form-input>
-          </b-form-group>
+          <div>
+            <b-form-group
+              label="Produto:"
+              label-for="nome_produto"
+              description="Insira um produto."
+            >
+              <b-form-select v-model="transacao.produto">
+                <b-form-select-option
+                  v-for="produto in produtos"
+                  :key="produto.id"
+                  :value="produto.id"
+                >
+                 {{produto.nome}}
+                </b-form-select-option>
+              </b-form-select>
+            </b-form-group>
+            <b-form-group
+              label="Quantidade:"
+              label-for="quantidade"
+              description="Insira uma quantidade."
+            >
+              <b-form-input id="quantidade" v-model="transacao.quantidade" required></b-form-input>
+            </b-form-group>
+          </div>
           <div class="mb-2 mt-1">
             <label for="data">Data da transacao</label>
             <b-form-datepicker id="data" v-model="transacao.data" class="mb-2"></b-form-datepicker>
           </div>
           <b-form-group label="Valor total:" label-for="geraPreco">
-            <b-form-input  v-model="transacao.valor" required></b-form-input>
+            <b-form-input v-model="transacao.valor" required></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Adicionar transacao</b-button>
           <b-button type="button" to="/lista-transacoes" variant="outline-primary">Voltar</b-button>
@@ -69,12 +71,10 @@ export default {
       transacao: {},
       empresas: [],
       produtos: [],
-      showAlert: false
+      showAlert: false,
     };
   },
-  computed:{
-
-  },
+  computed: {},
   methods: {
     adicionarTransacao() {
       this.axios

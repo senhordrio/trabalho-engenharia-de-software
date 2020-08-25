@@ -21,16 +21,17 @@ os clientes, e também com as vendas.
 #### **Linguagens:** 
 
 ##### Back-End:
-        PHP(v7.4.7) 
+        PHP (v7.2.5) 
+        Laravel (v7.25.0) 
 ##### Front-End
-        HTML(v5.2), Javascrip ECMAScript 2018, CSS
+        HTML(v5.2), Javascrip ECMAScript 2018, CSS, Vue 2.6.11
 #### Servidor:
         Apache 2.4.43.
-
 #### **SGBD:** 
-        phpMyAdmin 5.0.2.
+        MySql 15.1
 #### **IDE:**
         VSCODE v1.4 3.41.
+        PhPStorm 2020.2
 #### **Regras e padrões de organização de projeto**
         Como base para regras e padrões de organização de projeto, utilizaremos o git flow, que nos permite algumas nomeclaturas
         padrões, e alguns processos padrões, irei descreve-los aqui:

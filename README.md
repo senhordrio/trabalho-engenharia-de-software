@@ -28,7 +28,7 @@ os clientes, e também com as vendas.
 #### Servidor:
         Apache 2.4.43.
 #### **SGBD:** 
-        phpMyAdmin 5.0.2.
+        MySql 15.1
 #### **IDE:**
         VSCODE v1.4 3.41.
         PhPStorm 2020.2

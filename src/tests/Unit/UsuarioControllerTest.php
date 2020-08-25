@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class ProdutoControllerTest extends TestCase
+class UsuarioControllerTest extends TestCase
 {
 
     protected function setUp(): void
@@ -15,17 +15,14 @@ class ProdutoControllerTest extends TestCase
 
     public function testAdd()
     {
-        $response = $this->postJson('/api/produto/adicionar',
+        $response = $this->postJson('/api/usuario/adicionar',
             [
-                "ncm" => rand(10000000, 99999999),
-                "nome" => Str::random(10),
-                "quantidade" => rand(1, 10000),
-                "valor" => rand(1, 10000)
+                "email" => Str::random(10).'@gmail.com',
+                "senha" => "123",
             ]
         );
 
         $response
             ->assertStatus(200);
     }
-
 }

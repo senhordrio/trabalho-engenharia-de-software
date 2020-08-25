@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class EmpresaControllerTest extends TestCase
@@ -16,11 +17,11 @@ class EmpresaControllerTest extends TestCase
     {
         $response = $this->postJson('/api/empresa/adicionar',
             [
-                "cnpj" => "54104595000154",
-                "nome" => "empresa1",
-                "endereco" => "rua x",
-                "telefone" => "1234567890",
-                "encargo" => "encargo"
+                "cnpj" => rand(10000000000000, 99999999999999),
+                "nome" => Str::random(10),
+                "endereco" => "Rua " . Str::random(5).Str::random(10),
+                "telefone" => rand(100000000, 999999999),
+                "encargo" => Str::random(10)
             ]
         );
 

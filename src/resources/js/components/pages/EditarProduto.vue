@@ -54,11 +54,22 @@
 export default {
   data() {
     return {
+      usuario: {
+        email: '',
+        senha: ''
+      },
       produto: {},
       showAlert: false,
     };
   },
   created() {
+    this.usuario.email = JSON.parse(sessionStorage.getItem('email'));
+    this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
+
+    if (!this.usuario.email || !this.usuario.senha){
+      this.$router.push({name: 'login'})
+    }
+
     this.axios
       .get(`http://localhost:8000/api/produto/editar/${this.$route.params.id}`)
       .then((response) => {

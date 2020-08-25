@@ -1,50 +1,74 @@
 <template>
     <div class="body-login">
-        <div class="imagem-logo">
-            <img class="imagem-logo" v-bind:src="'https://i.ibb.co/d0pCGpm/berto-d-d.png'">
-            <div class="login">
-                <div class="login-triangle"></div>
+        <b-form @submit.prevent="login">
+            <div class="imagem-logo">
+                <img class="imagem-logo" v-bind:src="'https://i.ibb.co/d0pCGpm/berto-d-d.png'">
+                <div>
+                  <b-alert show dismissible v-model="showAlert" variant="danger">Não foi possível efetuar o login. Verifique seus dados.</b-alert>
+                </div>
+                <div class="login">
+                    <div class="login-triangle"></div>
 
-                <h2 class="login-header">Log in</h2>
+                    <h2 class="login-header">Log in</h2>
 
-                <form class="login-container">
-                    <p><input type="email" placeholder="Email" v-model="usuario.email"></p>
-                    <p><input type="password" placeholder="Senha" v-model="usuario.senha"></p>
-                    <p><input type="submit" value="Login"></p>
-                </form>
+                    <b-form-group class="login-container">
+                        <b-form-input required type="email" placeholder="Email" v-model="usuario.email"></b-form-input>
+                        <br>
+                        <b-form-input required type="password" placeholder="Senha" v-model="usuario.senha"></b-form-input>
+                        <br>
+                        <input type="submit" value="Login">
+                    </b-form-group>
+                </div>
             </div>
-        </div>
+        </b-form>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
             usuario: {
-                email: "",
-                senha: ""
-            }
+              email: '',
+              senha: ''
+            },
+            showAlert: false
         }
     },
 
     mounted() {
         //
     },
+    created() {
+
+    },
+
+    /*
+        ATENÇÃO: o método de login abaixo
+        é experimental e a nível de DEMONSTRAÇÃO,
+        e não deverá ser seguido de exemplo. Os dados
+        não são mascarados, estando em plain text.
+     */
+
     methods: {
-        login() {
+        login(){
             this.axios
-                // essa rota da api não existe ainda, coloquei
-                // aqui só pra não ficar vazio
                 .post('http://localhost:8000/api/login', this.usuario)
                 .then(
-                    (response) => (
-                        this.$router.push({name: 'dashboard'})
-                    )
+                    (response) => {
+                        this.$router.push({name: 'dashboard'});
+                    }
                 )
-            .catch((error) => console.log(error))
-            .finally(() => (this.loading = false));
-        }
+                .catch((error) => {
+                    this.showAlert = true;
+                })
+                .finally(() => {
+                    this.loading = false;
+                    sessionStorage.setItem('email', JSON.stringify(this.usuario.email));
+                    sessionStorage.setItem('senha', JSON.stringify(this.usuario.senha));
+                });
+        },
     }
 }
 </script>
@@ -52,7 +76,7 @@ export default {
 <style>
 
 html, .body-login{
-   
+
     font-family: 'Open Sans', sans-serif;
 }
 

@@ -30,7 +30,7 @@
                      :value="transacao.condicao"
                      true-value="Fechada"
                      false-value="Aberta"
-                     v-model="transacao.condicao">
+                     v-model.lazy="transacao.condicao">
               <label class="form-check-label" for="transacao">Declarar fechada</label>
             </div>
           </td>
@@ -50,9 +50,20 @@ export default {
   data() {
     return {
       transacoes: {},
+      usuario: {
+        email: '',
+        senha: ''
+      },
     };
   },
   created() {
+    this.usuario.email = JSON.parse(sessionStorage.getItem('email'));
+    this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
+
+    if (!this.usuario.email || !this.usuario.senha){
+      this.$router.push({name: 'login'})
+    }
+
     this.axios
       .get("http://localhost:8000/api/lista-transacoes")
       .then((response) => {
@@ -63,21 +74,13 @@ export default {
   methods:{
 
     fecharBalanco(){
-      for (var i = 0; i<this.transacoes.length; i++){
+      for (var i = 0; i < this.transacoes.length; i++){
         this.axios
           .post(`http://localhost:8000/api/transacao/update/${this.transacoes[i].id}`, this.transacoes[i])
           .then((response) => {
             this.$router.push({ name: "dashboard" })
           })
       }
-      //
-      //
-      // console.log(this.transacoes);
-      // this.axios
-      //   .post('http://localhost:8000/api/transacao/update', this.transacoes)
-      //   .then((response) => {
-      //     this.$router.push({ name: "dashboard" })
-      //   })
     }
   }
 }

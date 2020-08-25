@@ -72,8 +72,13 @@ export default {
       empresas: [],
       produtos: [],
       showAlert: false,
+      usuario: {
+        email: '',
+        senha: ''
+      },
     };
   },
+
   computed: {},
   methods: {
     adicionarTransacao() {
@@ -94,6 +99,13 @@ export default {
   },
   //Created aninhado que retorna listas de empresa e produtos cadastrados
   created() {
+    this.usuario.email = JSON.parse(sessionStorage.getItem('email'));
+    this.usuario.senha = JSON.parse(sessionStorage.getItem('senha'));
+
+    if (!this.usuario.email || !this.usuario.senha){
+      this.$router.push({name: 'login'})
+    }
+
     this.axios
       .get("http://localhost:8000/api/lista-empresas")
       .then((response) => {

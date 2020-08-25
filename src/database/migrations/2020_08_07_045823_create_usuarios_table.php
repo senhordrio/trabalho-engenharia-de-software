@@ -18,7 +18,6 @@ class CreateUsuariosTable extends Migration
             $table->timestamps();
             $table->string('email');
             $table->string('senha');
-            $table->multiLineString('permissoes');
         });
     }
 

@@ -2,7 +2,7 @@
     <div class="body-login">
         <b-form @submit.prevent="login">
             <div class="imagem-logo">
-                <img class="imagem-logo" v-bind:src="'https://i.ibb.co/d0pCGpm/berto-d-d.png'">
+                <img class="imagem-logo" v-bind:src="'https://i.ibb.co/NCdN3b0/berto-d-d.png'">
                 <div>
                   <b-alert show dismissible v-model="showAlert" variant="danger">Não foi possível efetuar o login. Verifique seus dados.</b-alert>
                 </div>

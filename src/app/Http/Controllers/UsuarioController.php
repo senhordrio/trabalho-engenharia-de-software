@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Usuario;
 
 class UsuarioController extends Controller
 {
@@ -16,14 +17,14 @@ class UsuarioController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add(Request $request)
     {
-        //
+      $usuario = new Usuario([
+        'email' =>$request->input('email'),
+        'senha' =>$request->input('senha'),
+      ]);
+      $usuario->save();
+      return response()->json('Usuário salvo com sucesso!');
     }
 
     /**
@@ -83,7 +84,15 @@ class UsuarioController extends Controller
     }
 
     public function login(Request $request){
-        error_log($request);
-        return response()->json($request);
+        $usuario = $request;
+        $id = $usuario->email;
+
+        $usuarioBanco = Usuario::firstWhere('email', $usuario->email);
+        error_log($usuarioBanco);
+        if ($usuarioBanco->email == $usuario->email and $usuarioBanco->senha == $usuario->senha){
+          return response()->json($request);
+        } else {
+          return response()->throwResponse();
+        }
     }
 }

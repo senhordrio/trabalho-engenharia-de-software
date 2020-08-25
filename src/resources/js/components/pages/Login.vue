@@ -3,15 +3,18 @@
         <b-form @submit.prevent="login">
             <div class="imagem-logo">
                 <img class="imagem-logo" v-bind:src="'https://i.ibb.co/d0pCGpm/berto-d-d.png'">
+                <div>
+                  <b-alert show dismissible v-model="showAlert" variant="danger">Não foi possível efetuar o login. Verifique seus dados.</b-alert>
+                </div>
                 <div class="login">
                     <div class="login-triangle"></div>
 
                     <h2 class="login-header">Log in</h2>
 
                     <b-form-group class="login-container">
-                        <b-form-input type="email" placeholder="Email" v-model="usuario.email"></b-form-input>
+                        <b-form-input required type="email" placeholder="Email" v-model="usuario.email"></b-form-input>
                         <br>
-                        <b-form-input type="password" placeholder="Senha" v-model="usuario.senha"></b-form-input>
+                        <b-form-input required type="password" placeholder="Senha" v-model="usuario.senha"></b-form-input>
                         <br>
                         <input type="submit" value="Login">
                     </b-form-group>
@@ -29,7 +32,8 @@ export default {
             usuario: {
               email: '',
               senha: ''
-            }
+            },
+            showAlert: false
         }
     },
 
@@ -41,10 +45,10 @@ export default {
     },
 
     /*
-      ATENÇÃO: o método de login abaixo
-      é experimental e a nível de DEMONSTRAÇÃO,
-      e não deverá ser seguido de exemplo. Os dados
-      não são mascarados, estando em plain text.
+        ATENÇÃO: o método de login abaixo
+        é experimental e a nível de DEMONSTRAÇÃO,
+        e não deverá ser seguido de exemplo. Os dados
+        não são mascarados, estando em plain text.
      */
 
     methods: {
@@ -52,15 +56,18 @@ export default {
             this.axios
                 .post('http://localhost:8000/api/login', this.usuario)
                 .then(
-                    (response) => (
-                        console.log(this.usuario.email),
-                        sessionStorage.setItem('email', JSON.stringify(this.usuario.email)),
-                        sessionStorage.setItem('senha', JSON.stringify(this.usuario.senha)),
-                        this.$router.push({name: 'dashboard'})
-                    )
+                    (response) => {
+                        this.$router.push({name: 'dashboard'});
+                    }
                 )
-                .catch((error) => console.log(error))
-                .finally(() => (this.loading = false));
+                .catch((error) => {
+                    this.showAlert = true;
+                })
+                .finally(() => {
+                    this.loading = false;
+                    sessionStorage.setItem('email', JSON.stringify(this.usuario.email));
+                    sessionStorage.setItem('senha', JSON.stringify(this.usuario.senha));
+                });
         },
     }
 }

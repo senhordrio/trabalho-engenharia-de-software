@@ -10,12 +10,18 @@ import AdicionarEmpresa from "./components/pages/AdicionarEmpresa";
 import EditarEmpresa from "./components/pages/EditarEmpresa";
 import Login from "./components/pages/Login";
 import FecharBalanco from "./components/pages/FecharBalanco";
+import AdicionarUsuário from "./components/pages/AdicionarUsuário";
 
 export const routes = [
     {
         name: "login",
         path: "/",
         component: Login
+    },
+    {
+        name: "cadastrarUsuario",
+        path: "/cadastro",
+        component: AdicionarUsuário
     },
     {
         name: "dashboard",

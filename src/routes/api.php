@@ -16,6 +16,7 @@ Route::group(['prefix' => 'produto'], function () {
 });
 
 Route::post('/login', 'UsuarioController@login');
+Route::post('/usuario/adicionar', 'UsuarioController@add');
 
 Route::get('lista-transacoes', 'TransacaoController@index');
 Route::group(['prefix' => 'transacao'], function () {

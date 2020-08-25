@@ -18,6 +18,9 @@
                         <br>
                         <input type="submit" value="Login">
                     </b-form-group>
+                <div class="cadastro">
+                    <router-link :to="{name: 'cadastrarUsuario'}">Cadastrar novo usuário</router-link>
+                </div>
                 </div>
             </div>
         </b-form>
@@ -78,6 +81,13 @@ export default {
 html, .body-login{
 
     font-family: 'Open Sans', sans-serif;
+}
+
+.cadastro{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .login {
